@@ -1,0 +1,16 @@
+# dependencies
+/node_modules
+
+# dotenv environment variables file
+.env
+.env.build
+
+# Logs
+yarn-error.log*
+
+# Certificates
+certificate.crt
+certificate.key
+
+# database data
+/database/data

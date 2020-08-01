@@ -1,0 +1,68 @@
+{
+  "name": "statbackend",
+  "version": "1.0.0",
+  "description": "Backend para fazer a aquisicao dos campos STAT do openPDC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./server.js",
+    "lint": "eslint --ext .js,.html -f ./node_modules/eslint-friendly-formatter . --fix",
+    "prepush": "yarn run lint",
+    "start": "node server.js",
+    "test": "jest",
+    "test:watch": "yarn run test -- --watch"
+  },
+  "author": "Fábio Matheus Mantelli",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "global": "^4.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-cron": "^2.0.3",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7",
+    "pg": "^8.2.1",
+    "sequelize": "^6.3.0",
+    "util": "^0.12.3",
+    "util.promisify": "^1.0.1",
+    "watchman": "^1.0.0"
+  },
+  "engines": {
+    "node": "12.16.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "3.2.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.1.0",
+    "supertest": "^4.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
