@@ -4,6 +4,7 @@
 # dotenv environment variables file
 .env
 .env.build
+.env.production
 
 # Logs
 yarn-error.log*
