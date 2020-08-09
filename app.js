@@ -21,7 +21,7 @@ app.use(index)
 app.use('/api/', statRoute)
 app.use('/login/', loginRoute)
 
-cron.schedule('50 23 * * * ', () => {
+cron.schedule('30 00 * * * ', () => {
   const date = new Date()
   const day = date.getDate() - 1
   const month = date.getMonth() + 1
