@@ -6,11 +6,20 @@ const Stat = require('../models/Stat')
 // Method to create a new 'stat' in database
 exports.createStat = async (req, res) => {
   // function to get STAT openPDC
-  async function getStat (ppa, startTime, endTime) {
+  async function getStat (ppa, system, startTime, endTime) {
     const data = []
+    let server
+
+    switch (system) {
+      case 'brazilianSystem':
+        server = '150.162.19.214'
+        break
+      case 'sepPmu':
+        server = '150.162.19.218'
+    }
 
     for (let i = 0; i < ppa.length; i++) {
-      const response = await fetch(`http://150.162.19.214:6052/historian/timeseriesdata/read/historic/${ppa[i].totalFrames},${ppa[i].minimumLatency},${ppa[i].maximumLatency},${ppa[i].averageLatency},${ppa[i].dataError},${ppa[i].configurationChange},${ppa[i].pmuTimeQuality}/${startTime}/${endTime}/json`)
+      const response = await fetch(`http://${server}:6052/historian/timeseriesdata/read/historic/${ppa[i].totalFrames},${ppa[i].minimumLatency},${ppa[i].maximumLatency},${ppa[i].averageLatency},${ppa[i].dataError},${ppa[i].configurationChange},${ppa[i].pmuTimeQuality}/${startTime}/${endTime}/json`)
       data[i] = await response.json()
     }
 
@@ -208,7 +217,7 @@ exports.createStat = async (req, res) => {
   console.log(`startTime: ${startTime}`)
   console.log(`endTime: ${endTime}`)
 
-  const dados = await getStat(ppa[system], startTime, endTime)
+  const dados = await getStat(ppa[system], system, startTime, endTime)
   const getData = average(dados, ppa[system])
 
   const promises = []
@@ -269,7 +278,7 @@ exports.listAllStat = async (req, res) => {
       date
     },
     attributes: {
-      exclude: ['id', 'date', 'createdAt', 'updatedAt']
+      exclude: ['id', 'date', 'createdAt', 'updatedAt', 'system']
     }
   })
 
