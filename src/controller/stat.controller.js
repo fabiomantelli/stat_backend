@@ -182,13 +182,16 @@ exports.createStat = async (req, res) => {
     ],
     sepPmu: [
       {
-        id: '26', pmu: 'teste1', totalFrames: 3521, minimumLatency: 3526, maximumLatency: 3527, averageLatency: 3534, dataError: 3516, configurationChange: 3530, pmuTimeQuality: 3517
+        id: '9', pmu: 'pmu-m-ufsc-florianopolis', totalFrames: 403, minimumLatency: 408, maximumLatency: 409, averageLatency: 416, dataError: 396, configurationChange: 412, pmuTimeQuality: 397
       },
       {
-        id: '27', pmu: 'teste2', totalFrames: 20849, minimumLatency: 20854, maximumLatency: 20855, averageLatency: 20862, dataError: 20844, configurationChange: 20858, pmuTimeQuality: 20845
+        id: '351', pmu: 'pmu-p-ufsc-florianopolis', totalFrames: 174, minimumLatency: 179, maximumLatency: 180, averageLatency: 187, dataError: 167, configurationChange: 183, pmuTimeQuality: 168
       },
       {
-        id: '29', pmu: 'teste3', totalFrames: 24303, minimumLatency: 24308, maximumLatency: 24309, averageLatency: 24316, dataError: 24296, configurationChange: 24312, pmuTimeQuality: 24297
+        id: '27', pmu: 'pmu-m-unicamp-campinas', totalFrames: 305, minimumLatency: 310, maximumLatency: 311, averageLatency: 318, dataError: 298, configurationChange: 314, pmuTimeQuality: 299
+      },
+      {
+        id: '4823', pmu: 'pmu-p-unifap-macapa', totalFrames: 219, minimumLatency: 224, maximumLatency: 225, averageLatency: 232, dataError: 212, configurationChange: 228, pmuTimeQuality: 213
       }
     ]
   }
@@ -199,18 +202,19 @@ exports.createStat = async (req, res) => {
   const startTime = req.body.date + time1
   const endTime = req.body.date + time2
   const system = req.body.system
-  console.log(`PPA: ${JSON.stringify(ppa)}`)
+  console.log(`PPA: ${ppa[system]}`)
   console.log(`System: ${system}`)
-  console.log(`Length of ppa.system: ${ppa.brazilianSystem}`)
+  console.log(`Type of System: ${typeof (system)}`)
+  console.log(`Length of ppa.system: ${ppa[system].length}`)
   console.log(`startTime: ${startTime}`)
   console.log(`endTime: ${endTime}`)
 
-  const dados = await getStat(ppa.brazilianSystem, startTime, endTime)
-  const getData = average(dados, ppa.brazilianSystem)
+  const dados = await getStat(ppa[system], startTime, endTime)
+  const getData = average(dados, ppa[system])
 
   const promises = []
   try {
-    for (let i = 0; i < ppa.brazilianSystem.length; i++) {
+    for (let i = 0; i < ppa[system].length; i++) {
       const {
         id_pmu, date, pmu, dados_recebidos, latencia_conforme, latencia_minima, latencia_media, latencia_maxima, dados_adequados, configuracao, pmu_time_quality
       } = getData[i]
