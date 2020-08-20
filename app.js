@@ -26,10 +26,29 @@ cron.schedule('30 00 * * * ', () => {
   const day = date.getDate() - 1
   const month = date.getMonth() + 1
   const year = date.getFullYear()
+  const system = 'brazilianSystem'
 
   const req = {
     body: {
-      date: `${month}-${day}-${year}`
+      date: `${month}-${day}-${year}`,
+      system: `${system}`
+    }
+  }
+
+  statController.createStat(req)
+})
+
+cron.schedule('35 00 * * * ', () => {
+  const date = new Date()
+  const day = date.getDate() - 1
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
+  const system = 'sepPmu'
+
+  const req = {
+    body: {
+      date: `${month}-${day}-${year}`,
+      system: `${system}`
     }
   }
 
