@@ -1,4 +1,4 @@
-require('dotenv/config');
+require('dotenv/config')
 
 module.exports = {
   dialect: 'postgres',
@@ -9,6 +9,6 @@ module.exports = {
   port: process.env.DB_PORT,
   define: {
     timestamps: true, // created_at, updated_at
-    underscored: true,
-  },
-};
+    underscored: true
+  }
+}

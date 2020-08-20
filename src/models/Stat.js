@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize')
 
 class Stat extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init({
       id_pmu: DataTypes.INTEGER,
       date: DataTypes.DATEONLY,
@@ -14,11 +14,11 @@ class Stat extends Model {
       dados_adequados: DataTypes.DECIMAL(5, 4),
       configuracao: DataTypes.DECIMAL(5, 4),
       pmu_time_quality: DataTypes.DECIMAL(5, 4),
-
+      system: DataTypes.STRING
     }, {
-      sequelize,
-    });
+      sequelize
+    })
   }
 }
 
-module.exports = Stat;
+module.exports = Stat

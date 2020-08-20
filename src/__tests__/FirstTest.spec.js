@@ -1,5 +1,5 @@
 test('it should be ok', () => {
-  const name = 'Fábio';
+  const name = 'Fábio'
 
-  expect(name).toEqual('Fábio');
-});
+  expect(name).toEqual('Fábio')
+})

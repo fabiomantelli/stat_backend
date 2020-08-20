@@ -5,56 +5,56 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
+        allowNull: false
       },
       id_pmu: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       date: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       pmu: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       dados_recebidos: {
-        type: Sequelize.DECIMAL(5, 4),
+        type: Sequelize.DECIMAL(5, 4)
       },
       latencia_conforme: {
-        type: Sequelize.DECIMAL(5, 4),
+        type: Sequelize.DECIMAL(5, 4)
       },
       latencia_minima: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       latencia_media: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       latencia_maxima: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       dados_adequados: {
-        type: Sequelize.DECIMAL(5, 4),
+        type: Sequelize.DECIMAL(5, 4)
       },
       configuracao: {
-        type: Sequelize.DECIMAL(5, 4),
+        type: Sequelize.DECIMAL(5, 4)
       },
       pmu_time_quality: {
-        type: Sequelize.DECIMAL(5, 4),
+        type: Sequelize.DECIMAL(5, 4)
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false,
-      },
-    });
+        allowNull: false
+      }
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('stats');
-  },
-};
+    await queryInterface.dropTable('stats')
+  }
+}
