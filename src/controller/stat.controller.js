@@ -197,8 +197,7 @@ exports.createStat = async (req, res) => {
   }
 
   const time1 = ' 00:00:00.000'
-  // const time2 = ' 23:59:59.999'
-  const time2 = ' 00:00:01.999'
+  const time2 = ' 23:59:59.999'
   const startTime = req.body.date + time1
   const endTime = req.body.date + time2
   const system = req.body.system
