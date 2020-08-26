@@ -7,13 +7,14 @@
     "dev": "nodemon ./server.js",
     "lint": "eslint --ext .js,.html -f ./node_modules/eslint-friendly-formatter . --fix",
     "prepush": "yarn run lint",
-    "start": "node server.js",
+    "start": "node -L server.js",
     "test": "jest",
     "test:watch": "yarn run test -- --watch"
   },
   "author": "Fábio Matheus Mantelli",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -24,7 +25,6 @@
     "global": "^4.4.0",
     "jsonwebtoken": "^8.5.1",
     "node-cron": "^2.0.3",
-    "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "pg": "^8.2.1",
     "sequelize": "^6.3.0",
